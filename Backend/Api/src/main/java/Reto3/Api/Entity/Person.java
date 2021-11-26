@@ -1,6 +1,7 @@
 
 package Reto3.Api.Entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import java.sql.Date;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -22,12 +23,12 @@ public class Person {
     
     @Column(name = "birth")
     @NotNull
-    @DateTimeFormat(pattern = "yyyy/MM/dd")
+    @DateTimeFormat
     public Date birth;
 
     public Person() {
     }
-
+    
     public Person(Long id, String fullName, Date birth) {
         this.id = id;
         this.fullName = fullName;
