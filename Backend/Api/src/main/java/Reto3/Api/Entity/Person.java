@@ -15,7 +15,7 @@ public class Person {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    public Long id;
+    public int id;
     
     @Column(name = "full_name")
     @NotNull
@@ -29,7 +29,7 @@ public class Person {
     public Person() {
     }
     
-    public Person(Long id, String fullName, Date birth) {
+    public Person(int id, String fullName, Date birth) {
         this.id = id;
         this.fullName = fullName;
         this.birth = birth;

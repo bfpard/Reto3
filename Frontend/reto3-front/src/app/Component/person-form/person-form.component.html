@@ -1,0 +1,85 @@
+<main>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-sm-6">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Nombre Completo</th>
+                            <th scope="col">Fecha de Cumpleaños</th>
+                            <th scope="col">Editar</th>
+                            <th scope="col">Eliminar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let person of personList">
+                            <td>{{person.id}}</td>
+                            <td>{{person.fullName}}</td>
+                            <td>{{person.birth}}</td>
+                            <td><button type="button" class="btn btn-primary" data-toggle="modal"
+                                    data-target="#edit" (click)="clickEditPersona(person)">Editar</button></td>
+                            <td><button class="btn btn-danger" type="button" (click)="eliminarPersona(person)">Delete</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-sm-1"></div>
+            <div class="col-sm-4">
+                <form [formGroup]="fg">
+                    <h1>Crear Persona</h1>
+                    <div class="form-group">
+                        <label for="fullName" class="form-label">Nombre Completo:</label>
+                        <input formControlName="fullName" type="text" name="fullName" class="form-control" id="fullName"
+                            placeholder="Nombre y Apellido" />
+                    </div>
+                    <div class="mt-3">
+                        <label for="start">Birth:</label>
+                        <br>
+                        <input formControlName="birth" type="date" id="birth" name="birth" value="2018-07-22"
+                            min="1970-01-01" max="2021-12-30">
+                    </div>
+                    <button (click)="crearPersona()" type="submit" class="btn btn-primary mt-3">Crear</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+
+<!-- The Modal -->
+<div class="modal" id="edit">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Editar Persona</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <form [formGroup]="fg">
+                    <div class="form-group">
+                        <label for="fullName" class="form-label">Nombre Completo:</label>
+                        <input formControlName="fullName" type="text" name="fullName" class="form-control" id="fullName"
+                            placeholder="Nombre y Apellido" />
+                    </div>
+                    <div class="mt-3">
+                        <label for="start">Birth:</label>
+                        <br>
+                        <input formControlName="birth" type="date" id="birth" name="birth" value="2018-07-22"
+                            min="1970-01-01" max="2021-12-30">
+                    </div>
+                </form>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">   
+                <button (click)="editarPersona()" type="submit" class="btn btn-primary" data-dismiss="modal">Editar</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

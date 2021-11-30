@@ -32,7 +32,7 @@ public class PersonController {
     }
     
     @GetMapping("/find/{id}")
-    public ResponseEntity<Person> getById(@PathVariable("id") Long id){
+    public ResponseEntity<Person> getById(@PathVariable("id")int id){
         if(!personService.existsById(id))
             return new ResponseEntity(new message("Not exist"),HttpStatus.NOT_FOUND);
         
@@ -42,26 +42,21 @@ public class PersonController {
     
     @PostMapping("/create")
     public ResponseEntity<?> create(@RequestBody Person person){
-        Long setId = personService.countId();
-        while(personService.existsById(setId)){
-            setId += 1;
-        }
-        person.id = setId;
         personService.save(person);
         return new ResponseEntity(new message("Person Created"),HttpStatus.CREATED);
     }
     
     @PutMapping("/edit/{id}")
-    public ResponseEntity<?> update(@PathVariable("id")Long id, @RequestBody Person person){
+    public ResponseEntity<?> update(@PathVariable("id")int id, @RequestBody Person person){
         Person person2 = personService.getId(id).get();
         person2.fullName = person.fullName;
         person2.birth = person.birth;
         personService.save(person2);
-        return new ResponseEntity(new message("Person Updated"), HttpStatus.UPGRADE_REQUIRED);
+        return new ResponseEntity(new message("Person Updated"), HttpStatus.OK);
     }
     
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<?> delete(@PathVariable("id")Long id){
+    public ResponseEntity<?> delete(@PathVariable("id")int id){
         if(!personService.existsById(id))
             return new ResponseEntity(new message("Not exists"), HttpStatus.NOT_FOUND);
         personService.delete(id);

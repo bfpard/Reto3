@@ -21,7 +21,7 @@ public class PersonService {
         return personRepository.count();
     }
     
-    public Optional<Person> getId(Long id){
+    public Optional<Person> getId(int id){
         return personRepository.findById(id);
     }
     
@@ -33,7 +33,7 @@ public class PersonService {
         personRepository.save(person);
     }
     
-    public void delete(Long id){
+    public void delete(int id){
         
         personRepository.deleteById(id);
         
@@ -43,7 +43,7 @@ public class PersonService {
         return personRepository.existsByFullName(fullName);
     }
     
-    public boolean existsById(Long id){
+    public boolean existsById(int id){
         return personRepository.existsById(id);
     }
 }

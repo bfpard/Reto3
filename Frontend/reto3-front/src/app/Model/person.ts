@@ -1,7 +1,5 @@
-export class person{
+export class Person {
     id!: number;
-    fullName!: String;
-    birth!: Date;
-
-    constructor(){}
+    fullName!: string;
+    birth!:Date;
 }

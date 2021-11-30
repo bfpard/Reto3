@@ -1,27 +1,24 @@
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import {HttpClientModule} from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ListPersonComponent } from './Components/list-person/list-person.component';
-import { CreatePersonComponent } from './Components/create-person/create-person.component';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms'
-import {PersonServiceService} from '../app/Service/person-service.service';
-import {HttpClientModule} from '@angular/common/http';
+import { PersonFormComponent } from './Component/person-form/person-form.component';
+
 @NgModule({
   declarations: [
     AppComponent,
-    ListPersonComponent,
-    CreatePersonComponent
+    PersonFormComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    FormsModule,
     HttpClientModule
   ],
-  providers: [PersonServiceService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
